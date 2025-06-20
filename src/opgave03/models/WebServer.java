@@ -1,17 +1,21 @@
 package opgave03.models;
 
 public class WebServer {
-    private Logger logger;
+    private LogStrategi logStrategi;
 
-    public WebServer(Logger logger) {
-        this.logger = logger;
+    public WebServer(LogStrategi logStrategi){
+        this.logStrategi = logStrategi;
     }
 
     public void handleRequest(String request) {
         if (request.isEmpty()) {
-            logger.logError("Request is empty");
+            logStrategi.logError("Request is empty");
             return;
         }
-        logger.logInfo("Handling request: " + request);
+        logStrategi.logInfo("Handling request: " + request);
+    }
+
+    public void setLogTilConsoleStrategi(LogStrategi logTilConsoleStrategi) {
+        this.logStrategi = logTilConsoleStrategi;
     }
 }
